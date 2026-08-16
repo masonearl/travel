@@ -7,16 +7,18 @@
       "name": "Switzerland",
       "tagline": "Alps, trains, lakes. The expensive one that is still worth it.",
       "nights": 9,
-      "headline": "$7k–$10k for two, mid-range",
-      "status": "planning"
+      "headline": "$7k\u2013$10k for two, mid-range",
+      "status": "planning",
+      "image": "destinations/switzerland/img/matterhorn.jpg"
     },
     {
       "id": "hawaii",
       "name": "Hawaii",
       "tagline": "Closer, warmer, easier. Start with Oahu or go bigger on Maui.",
       "nights": 8,
-      "headline": "$5k–$7.5k for two on Oahu",
-      "status": "planning"
+      "headline": "$5k\u2013$7.5k for two on Oahu",
+      "status": "planning",
+      "image": "destinations/hawaii/img/waikiki.jpg"
     }
   ]
 }

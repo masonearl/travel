@@ -35,3 +35,10 @@ h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.75rem; }
 .howto ol { padding-left: 1.2rem; }
 .howto li { margin-bottom: 0.35rem; }
 code { background: var(--card); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+
+.place { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; align-items: center; }
+.place img { width: 140px; height: 88px; object-fit: cover; border-radius: 8px; background: #1a1a1a; }
+@media (max-width: 600px) {
+  .place { grid-template-columns: 1fr; }
+  .place img { width: 100%; height: 140px; }
+}

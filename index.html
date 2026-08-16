@@ -34,9 +34,10 @@
           a.className = "place";
           a.href = "destinations/" + p.id + "/index.html";
           a.innerHTML =
-            "<h2>" + p.name + "</h2>" +
+            (p.image ? "<img src=\"" + p.image + "\" alt=\"" + p.name + "\">" : "") +
+            "<div><h2>" + p.name + "</h2>" +
             "<p>" + p.tagline + "</p>" +
-            "<div class=\"meta\"><span>" + p.nights + " nights</span><span>" + p.headline + "</span></div>";
+            "<div class=\"meta\"><span>" + p.nights + " nights</span><span>" + p.headline + "</span></div></div>";
           list.appendChild(a);
         });
       });
