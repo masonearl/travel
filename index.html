@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel — places I want to go</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">From Salt Lake City</p>
+    <h1>Places I want to go</h1>
+    <p class="lede">A presentation and a trip cost for each place. Add more whenever. Numbers are 2026 planning ranges, not live quotes.</p>
+    <div id="list"></div>
+    <div class="howto">
+      <h3>Add a place</h3>
+      <ol>
+        <li>Copy <code>_template</code> to <code>destinations/your-place</code></li>
+        <li>Add an entry in <code>destinations.json</code></li>
+        <li>Fill the slides and the cost table, then push</li>
+      </ol>
+    </div>
+  </div>
+  <script>
+    fetch("destinations.json")
+      .then((r) => r.json())
+      .then((data) => {
+        const list = document.getElementById("list");
+        data.places.forEach((p) => {
+          const a = document.createElement("a");
+          a.className = "place";
+          a.href = "destinations/" + p.id + "/index.html";
+          a.innerHTML =
+            "<h2>" + p.name + "</h2>" +
+            "<p>" + p.tagline + "</p>" +
+            "<div class=\"meta\"><span>" + p.nights + " nights</span><span>" + p.headline + "</span></div>";
+          list.appendChild(a);
+        });
+      });
+  </script>
+</body>
+</html>
