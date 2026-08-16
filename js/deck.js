@@ -21,6 +21,48 @@
     if (e.key === "End") show(slides.length - 1);
   });
 
+  let startX = 0;
+  let startY = 0;
+  let tracking = false;
+
+  function onStart(x, y) {
+    startX = x;
+    startY = y;
+    tracking = true;
+  }
+
+  function onEnd(x, y) {
+    if (!tracking) return;
+    tracking = false;
+    const dx = x - startX;
+    const dy = y - startY;
+    if (Math.abs(dx) < 40) return;
+    if (Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(i + 1);
+    else show(i - 1);
+  }
+
+  document.addEventListener("touchstart", (e) => {
+    const t = e.changedTouches[0];
+    onStart(t.clientX, t.clientY);
+  }, { passive: true });
+
+  document.addEventListener("touchend", (e) => {
+    const t = e.changedTouches[0];
+    onEnd(t.clientX, t.clientY);
+  }, { passive: true });
+
+  document.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    if (e.target.closest("a, button")) return;
+    onStart(e.clientX, e.clientY);
+  });
+
+  document.addEventListener("pointerup", (e) => {
+    if (e.target.closest("a, button")) return;
+    onEnd(e.clientX, e.clientY);
+  });
+
   const hash = parseInt((location.hash.match(/s(\d+)/) || [])[1], 10);
   show(hash ? hash - 1 : 0);
 })();
